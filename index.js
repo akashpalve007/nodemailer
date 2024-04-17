@@ -6,8 +6,15 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 5001;
 
-// Middleware
-app.use(cors());
+// Configure CORS
+const corsOptions = {
+  origin: "https://airavat.com", // Replace with your actual form's domain
+  optionsSuccessStatus: 200, // This is necessary for older browsers
+};
+
+// Use CORS with the specified options
+app.use(cors(corsOptions));
+
 app.use(bodyParser.json());
 
 // SMTP Transport
